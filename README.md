@@ -31,7 +31,7 @@ After installation, open the XAMMP control panel and start the Apache and MySQL 
     `git init`
 
 <b> Else </b>
-- Clone this repository with `git clone https://github.com/jgustavoj/vet_app.git `
+- Clone this repository with `git clone https://github.com/jgustavoj/flask_boilerplate`
 
 ## Node.js
 
