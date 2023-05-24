@@ -36,12 +36,11 @@ def index():
 # @authcheck(authgroups.all)
 def dashboard():
     admin = models.User.query.all()
-
-    return render_template('ms/home_dashboard.html', admin=admin)
+    return render_template('main/dashboard.html', admin=admin)
 
 @bp.route('/login', methods=['GET'])
 def login():
-    return render_template('ms/login.html')
+    return render_template('main/login.html')
     # if g.admin:
     #     return redirect(url_for('admin.dashboard'))
     # return render_template('pm/login.html')
