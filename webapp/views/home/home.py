@@ -43,5 +43,5 @@ def login():
     return render_template('main/login.html')
     # if g.admin:
     #     return redirect(url_for('admin.dashboard'))
-    # return render_template('pm/login.html')
+    # return render_template('main/login.html')
     ip_case = models.Case.query.filter_by(case_id=request.form.get('ip_case_id')).first()
