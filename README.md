@@ -1,19 +1,19 @@
 # Introduction
 
-This repository contains Vet App website and software 
+This repository contains Vet App website and software
 
-# Content 
+# Content
 
 1. Initial Setup
-    1. [Local Server/Database Stack](#local-serverdatabase-stack)
-    1. [Repo](#repo)
-    1. [Node.js](#nodejs)
-    1. [Python Setup](#python-setup)
-    1. [Flask Config Setup](#flask-config-setup)
-    1. [Database Setup](#database-setup)
-    1. [Run the Local Server](#run-the-local-server)
-        1. [Initialize Database](#initialize-database)
-    1. [Tests](#tests)
+   1. [Local Server/Database Stack](#local-serverdatabase-stack)
+   1. [Repo](#repo)
+   1. [Node.js](#nodejs)
+   1. [Python Setup](#python-setup)
+   1. [Flask Config Setup](#flask-config-setup)
+   1. [Database Setup](#database-setup)
+   1. [Run the Local Server](#run-the-local-server)
+      1. [Initialize Database](#initialize-database)
+   1. [Tests](#tests)
 
 # Initilizing project
 
@@ -26,16 +26,18 @@ After installation, open the XAMMP control panel and start the Apache and MySQL 
 ## Repo
 
 <b> If first time using git </b>
-- When first starting new project make sure to initilize git with command 
 
-    `git init`
+- When first starting new project make sure to initilize git with command
+
+  `git init`
 
 <b> Else </b>
+
 - Clone this repository with `git clone https://github.com/jgustavoj/flask_boilerplate`
 
 ## Node.js
 
-At this moment were updating documentation for node.js installation and settings. Skip this step for now as is inclined to speed up production package and assist in development process. But not necessary. 
+At this moment were updating documentation for node.js installation and settings. Skip this step for now as is inclined to speed up production package and assist in development process. But not necessary.
 
 <!---
 [Node.js is required in this project primarily for Webpack, which bundles and minifies SCSS->CSS and JavaScript.
@@ -47,30 +49,30 @@ At this moment were updating documentation for node.js installation and settings
     * If using NVM, use e.g. `nvm install 14.15.4` followed by `nvm use 14.15.4`
 1. Run `npm install` from the repository root directory to install all required node modules. This may take a few minutes.
     * There may be a warning message about security updates. `npm audit fix` should (hopefully) resolve these.
-    
+
     * For potential issues with rpm install and nan run the following commands to install nan globally:
-    
+
     	`npm i -g nan`
-    
+
     	`export NODE_PATH=$(npm root -g)`
-	
-    * Common error `npm WARN enoent ENOENT: no such file or directory, open 'C:\Users\Nuwanst\package.json'` 
+
+    * Common error `npm WARN enoent ENOENT: no such file or directory, open 'C:\Users\Nuwanst\package.json'`
     * Follow this steps:
-  
+
 		a) Delete package.json and package-lock.json file
 
 		b) type `npm init`
 
 		c) type `npm install`
-	
-  	
+
+
     * For Mac users and potential issues with No Xcode or CLT version detected, follow the following instructions:
-    
+
 		a) First, get the location of the installed command-line tools by running the command below:
 
 		`xcode-select --print-path`
 
-		b) Knowing the path to the currently installed command-line tools from the previous step, You can now go ahead and 
+		b) Knowing the path to the currently installed command-line tools from the previous step, You can now go ahead and
 	    remove it from the system. For the next set of commands, you need sudo privileges to run successfully.
 
 	    `sudo rm -r -f /Library/Developer/CommandLineTools`
@@ -82,7 +84,7 @@ At this moment were updating documentation for node.js installation and settings
 		d)Finally continue to use the npm package managment tool to install dependencies:
 
 		`npm install`
-    
+
 1. To confirm node/webpack setup, run `npm run build` to recompile assets. If there aren't any obvious error messages, it probably worked. To be doubly sure, you can delete `static/css/*.bundle.min.css` and `static/js/*.bundle.min.js` files prior to running `npm run build` and see if they reappear after it runs.
 
 
@@ -102,20 +104,25 @@ Typically, you should only need `npm run build` to rebuild all static assets. Ho
 ](url)
 
 -->
+
 ## Python Setup
 
-1. At the time of development this project was created with python 3.9.2 (recommended), anything higher will cause modifications not explained in this docuemenation. 
-1. (Recommended) Create a new virtual environment for this project, and activate it: Follow this steps: 
+1. At the time of development this project was created with python 3.9.2 (recommended), anything higher will cause modifications not explained in this docuemenation.
+1. (Recommended) Create a new virtual environment for this project, and activate it: Follow this steps:
 
 - Create environment `venv`
 
-    `python -m venv venv`
+  `python -m venv venv`
 
-- Activate environment; this will change depending on your system 
+- Activate environment; this will change depending on your system
 
-    If you are using git bash for windows you need to initilize the command
+  If you are using git bash for windows you need to initilize the command
 
   `source venv/Scripts/activate`
+
+  If you are on a Mac:
+
+  `source venv/bin/activate`
 
 if you are using CMD then the activate.bat should work fine.
 
@@ -125,7 +132,7 @@ if you are using CMD then the activate.bat should work fine.
 
 ## Flask Config Setup
 
-Flask config files are located in the `config/` directory. By default, `default.cfg` is always loaded, then values from it may be overwritten by additional context-specific config files. 
+Flask config files are located in the `config/` directory. By default, `default.cfg` is always loaded, then values from it may be overwritten by additional context-specific config files.
 
 Most of the values in `default.cfg` are expected to be pulled in from OS environment variables (so API keys and other secrets are not committed to the repository). For local development, you will need a `config/local.cfg` file that contains these secrets, and any other values you need to change to get the app running locally (such as the database URI). This repo contains an example `local.cfg` in `config/local_example.cfg` as a reference for how these files work.
 
@@ -134,14 +141,13 @@ Most of the values in `default.cfg` are expected to be pulled in from OS environ
 Create a database for the project Make a note of what you name the database.
 
 You may need to adjust values in `local.cfg` to match the MySQL settings on your machine. (XAMMP does not set MySQL up consistently, especially across different operating systems, so this is hard to predict). Once you figure out your credentials and which port the MySQL service is running on, update `SQLALCHEMY_DATABASE_URI` in `local.cfg`
-    
-    
+
     # Format
     # SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{username}:{password}@localhost:{port}/{dbname}?charset=utf8mb4'
 
     # Actual Example
     SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:root@localhost:3306/tfc?charset=utf8mb4'
-    
+
 ## Run the Local Server
 
 Start the local server with `python flaskapp.py`
@@ -155,17 +161,14 @@ If things are set up properly, you should see within the output:
 
 The application should now be available at `http://localhost:3000` (or a different PORT specified in `local.cfg`).
 
-
 ### Initialize Database
 
 Once the server is running, go to `http://localhost:3000/setup/init-db` to create database tables for this project in the database specified by the `SQLALCHEMY_DATABASE_URI` in `config/local.cfg`. You should see "SUCCESS" in the browser window.
 
-
 ## Tests
 
-[Pytest](https://pytest.org/) is used for testing. 
+[Pytest](https://pytest.org/) is used for testing.
 
-Run `pip install pytest` to install pytest. 
+Run `pip install pytest` to install pytest.
 
-Run tests with `python -m pytest` from the repository root directory. Note this must be used rather than just `pytest` 
-
+Run tests with `python -m pytest` from the repository root directory. Note this must be used rather than just `pytest`
